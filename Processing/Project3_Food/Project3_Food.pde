@@ -1,8 +1,9 @@
 /* Project 3 Food
   by Ashley Woon
   
+  This verion of Project 3 does not include use of potentiometer as the creator's potentiometer is not working
   Made in connection with an Arduino sketch and hardware including:
-  (1)Adafruit ESP32, (1)breadboard, (1)push button, (1)potentiometer, (1)LED, (1) RGB LED, (5)resistors
+  (1)Adafruit ESP32, (1)breadboard, (1)push button, (1)LED, (1) RGB LED, (5)resistors
 */
 
 // Importing the serial library to communicate with the Arduino 
@@ -21,12 +22,12 @@ int switchValue = 0;
 int lastSwitchValue;
 int count = 0;
 
-int potValue = 0;
+//int potValue = 0;
 
-//mapping pot values
-float minPotValue = 0;
-float maxPotValue = 4095;
-float selector;
+////mapping pot values
+//float minPotValue = 0;
+//float maxPotValue = 4095;
+//float selector;
 
 // Change to appropriate index in the serial list — YOURS MIGHT BE DIFFERENT
 int serialIndex = 0;
@@ -82,14 +83,16 @@ void setup()
     fishTimer.start();
     cookingTimer = new Timer(second);
     cookingTimer.start();
+    
+    state =  defaultState;
 }
 
 void draw() {
   checkSerial();
   
-  if(count == 0)
+  if(count == 1)
     drawDefaultBackground();
-  else if(count == 1)
+  else if(count == 2)
   {
     if(state == defaultState)
       drawDefaultBackground(); 
@@ -98,9 +101,9 @@ void draw() {
     else if(state == fishState)
       drawFishState();
   }
-  else if(count == 2)
-    drawOpenState();
   else if(count == 3)
+    drawOpenState();
+  else if(count == 4)
     count = 0;
     
 }
@@ -123,17 +126,22 @@ void checkSerial()
    // we have THREE items — ERROR-CHECK HERE
    if( data.length >= 2 ) {
       switchValue = int(data[0]);           // first index = switch value 
-      potValue = int(data[1]);               // second index = pot value
+      //potValue = int(data[1]);               // second index = pot value
       
-      // change the display timer
-      selector = map(potValue, minPotValue, maxPotValue, minPotValue, maxPotValue);
+      // get the potentiometer value
+      //selector = map(potValue, minPotValue, maxPotValue, minPotValue, maxPotValue);
    }
   }
-    if(selector <= 1365)
-      state = defaultState;
-    else if(selector > 1365 && selector <= 2730)
+    //if(selector <= 1365)
+    //  state = defaultState;
+    //else if(selector > 1365 && selector <= 2730)
+    //  state = chickenState;
+    //else if(selector > 2730 && selector <=4095)
+    //  state = fishState;
+    
+    if(key == 'C' || key == 'c')
       state = chickenState;
-    else if(selector > 2730 && selector <=4095)
+    else if(key == 'F' || key == 'f')
       state = fishState;
     
   if(switchValue != lastSwitchValue)
