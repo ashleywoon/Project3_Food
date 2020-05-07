@@ -51,12 +51,14 @@ int msTimer = 5000;
 int second = 1000;
 
 //Chicken variables
+  boolean chicken = false;
   int cBodyX = 20;
   int cBodyY = 15;
   int cLegX = 15;
   int cLegY = 10;
   int cX = 510;
 //Fish variables
+  boolean fish = false;
   int fBodyX = 20;
   int fBodyY = 10;
 
@@ -90,22 +92,14 @@ void setup()
 void draw() {
   checkSerial();
   
-  if(count == 1)
+  if(state == defaultState)
     drawDefaultBackground();
-  else if(count == 2)
-  {
-    if(state == defaultState)
-      drawDefaultBackground(); 
-    else if(state == chickenState)
-      drawChickenState();
-    else if(state == fishState)
-      drawFishState();
-  }
-  else if(count == 3)
+  else if(state == chickenState)
+    drawChickenState();
+  else if(state == fishState)
+    drawFishState();
+  else if(state == openState)
     drawOpenState();
-  else if(count == 4)
-    count = 0;
-    
 }
 
 // We call this to get the data 
@@ -138,18 +132,40 @@ void checkSerial()
     //  state = chickenState;
     //else if(selector > 2730 && selector <=4095)
     //  state = fishState;
-    
-    if(key == 'C' || key == 'c')
-      state = chickenState;
-    else if(key == 'F' || key == 'f')
-      state = fishState;
-    
+    if(keyPressed)
+    {
+      if(key == 'C' || key == 'c')
+        chicken = true;
+      else if(key == 'F' || key == 'f')
+        fish = true;
+      print("c");
+    }
+      
   if(switchValue != lastSwitchValue)
   {
     if(switchValue == 1) 
       count+=1;
   }
   lastSwitchValue = switchValue;
+  
+  if(count == 0)
+  {
+    state = defaultState;
+    if(chicken == true)
+      state = chickenState;
+    else if(fish == true)
+      state = fishState;
+  }
+  else if(count == 1)
+    state = openState;
+  else if(count == 2)
+  {
+    count = 0;
+    state = defaultState;
+    chicken = false;
+    fish = false;
+  }    
+  
 }
 
 void drawDefaultBackground()

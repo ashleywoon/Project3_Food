@@ -78,7 +78,7 @@ void checkButton() {
         {
           buttonCount++;
         }
-        if(buttonCount == 3)
+        if(buttonCount == 2)
         {
           buttonCount = 0;
         }
@@ -89,7 +89,7 @@ void checkButton() {
 //Checks to see if button count is equal to 2 indicating a meal has been chosen, confirmed, and the user
 //now wants to open the door. An LED will stay on until the button is pressed again indicating the door has closed
 void checkDoor() {
-  if(buttonCount == 2)
+  if(buttonCount == 1)
     {
        digitalWrite(LED, HIGH);
     }

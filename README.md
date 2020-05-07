@@ -16,7 +16,7 @@ There is an individual folder associated with the Processing sketch and related 
 There is pdf titled design document, a license, and a README.md file to explain this repository.
 
 ##  3) Video and hardware
-There is a mp4 file showcasing the Processing sketch and the hardware in action
+There are 3 mp4 files showcasing the Processing sketch and the hardware in action. One is showing the code, one is of the fish state, one is of the chicken state.
 
 *cooked chicken image courtesy of Zachisdabomb from
  https://minecraft.fandom.com/wiki/Cooked_Chicken/Gallery?file=Cookedchicken.png
