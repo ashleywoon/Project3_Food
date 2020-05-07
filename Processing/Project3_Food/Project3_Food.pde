@@ -102,6 +102,7 @@ void draw() {
     drawOpenState();
   else if(count == 3)
     count = 0;
+    
 }
 
 // We call this to get the data 

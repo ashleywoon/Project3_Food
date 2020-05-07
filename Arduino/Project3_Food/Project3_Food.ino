@@ -34,7 +34,7 @@ void setup() {
   pinMode(button, INPUT);
   pinMode(pot, INPUT);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
