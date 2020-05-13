@@ -1,6 +1,8 @@
 # Project3_Food
 ####by Ashley Woon
 
+*NOTE: please look at work on the alternate version branch as well as the main branch, due to my pot not working updated work is in that branch!
+
 ###To interact with this project, use the potentiometer to make a meal selection. After choosing a meal push the button once to confirm and watch it cook. Press the button a second time and the door will open and you've taken out your food. Press one more time to close the door and you're done! This device works like a real microwave in that it must be reset (the program restarted) to be used again.
 
 ###This github for my Project 3 is categorized as 3 components. 
